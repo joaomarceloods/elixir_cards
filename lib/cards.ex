@@ -1,6 +1,5 @@
 defmodule Cards do
-
-  def deck do
+  def create_deck do
     for value <- values(), suit <- suits() do
       "#{value} of #{suit}"
     end
@@ -40,4 +39,7 @@ defmodule Cards do
     end
   end
 
+  def create_hand(hand_size) do
+    create_deck() |> shuffle() |> deal(hand_size)
+  end
 end
