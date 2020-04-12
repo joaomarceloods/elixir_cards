@@ -1,4 +1,8 @@
 defmodule Cards do
+  @moduledoc """
+    Provides methods for creating and handling a deck of cards.
+  """
+
   def create_deck do
     for value <- values(), suit <- suits() do
       "#{value} of #{suit}"
@@ -21,6 +25,17 @@ defmodule Cards do
     Enum.member?(deck, card)
   end
 
+  @doc """
+    Draws from the deck a number of cards determined by `hand_size`.
+    Returns a tuple containing the drawn cards and the remaining cards.
+
+  ## Example
+
+      iex> deck = Cards.create_deck()
+      iex> {hand, deck} = Cards.deal(deck, 2)
+      iex> hand
+      ["Ace of Spades", "Ace of Clubs"]
+  """
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
   end
