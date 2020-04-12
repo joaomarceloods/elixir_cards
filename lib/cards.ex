@@ -1,7 +1,7 @@
 defmodule Cards do
 
   def deck do
-    for value <- values, suit <- suits do
+    for value <- values(), suit <- suits() do
       "#{value} of #{suit}"
     end
   end
